@@ -73,6 +73,7 @@ jobs:
           VERSION=$(cat release_assets/version.buildinfo | grep '^r' | head -n 1)
           echo "RELEASE_TITLE=${RELEASE_DATE} - ${VERSION}" >> $GITHUB_OUTPUT
           echo $GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
       - name: Check for changes since last tag
         id: check-changes
         run: |
