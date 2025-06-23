@@ -24,7 +24,7 @@ jobs:
       - name: Generate file
         run: |
           dd if=/dev/zero of=test.file count=32 bs=1M
-          TZ=Asia/Shanghai date +'%y%m%d%H%M%S' > version.buildinfo
+          TZ=Asia/Shanghai date +'r%y%m%d-%H%M%S' > version.buildinfo
           echo 'this is test.manifest' > test.manifest
       - name: Prepare release assets
         run: |
