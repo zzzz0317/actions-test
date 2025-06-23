@@ -61,7 +61,7 @@ jobs:
       - name: List files
         run: |
           ls -lah
-          du -h --max-depth=3
+          ls -lah release_assets
       - name: Get current date and time for release info
         id: release-prepare
         run: |
