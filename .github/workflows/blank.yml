@@ -68,9 +68,10 @@ jobs:
         run: |
           current_date=$(TZ=Asia/Shanghai date +'%y%m%d')
           current_time=$(TZ=Asia/Shanghai date +'%H%M%S')
+          new_tag=v0.${current_date}.${current_time}
           echo "current_date=${current_date}" >> $GITHUB_OUTPUT
           echo "current_time=${current_time}" >> $GITHUB_OUTPUT
-          echo "new_tag=v0.${current_date}.${current_time}" >> $GITHUB_OUTPUT
+          echo "new_tag=${new_tag}" >> $GITHUB_OUTPUT
           RELEASE_DATE=$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')
           VERSION=$(cat release_assets/version.buildinfo | grep '^r' | head -n 1)
           echo "RELEASE_TITLE=${RELEASE_DATE} - ${VERSION}" >> $GITHUB_OUTPUT
