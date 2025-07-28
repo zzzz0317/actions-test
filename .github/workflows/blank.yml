@@ -77,6 +77,15 @@ jobs:
           image_prefix=LEDE-zzXGPv3-${current_date}${current_time}-
           echo "IMAGE_PREFIX=${image_prefix}" >> $GITHUB_OUTPUT
           echo "test release" > release_info.md
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -n "$PREVIOUS_TAG" ]; then
+              echo "<details>" >> release_info.md
+              echo "<summary>本仓库变更记录 (${PREVIOUS_TAG}..${new_tag})</summary>" >> release_info.md
+              echo "" >> release_info.md
+              git log --pretty=format:"(%h) %s" ${PREVIOUS_TAG}..HEAD >> release_info.md
+              echo "" >> release_info.md
+              echo "</details>" >> release_info.md
+          fi
       - name: Create new tag
         run: |
           git tag ${{ steps.release-prepare.outputs.new_tag }}
