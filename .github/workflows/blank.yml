@@ -72,7 +72,7 @@ jobs:
           echo "current_time=${current_time}" >> $GITHUB_OUTPUT
           echo "new_tag=v0.${current_date}.${current_time}" >> $GITHUB_OUTPUT
           RELEASE_DATE=$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')
-          VERSION="r1111 - xxxxxxxx"
+          VERSION=$(cat release_assets/version.buildinfo | grep '^r' | head -n 1)
           echo "RELEASE_TITLE=${RELEASE_DATE} - ${VERSION}" >> $GITHUB_OUTPUT
           image_prefix=LEDE-zzXGPv3-${current_date}${current_time}-
           echo "IMAGE_PREFIX=${image_prefix}" >> $GITHUB_OUTPUT
