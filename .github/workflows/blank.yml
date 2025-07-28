@@ -83,7 +83,7 @@ jobs:
               echo "<details>" >> release_info.md
               echo "<summary>本仓库变更记录 (${PREVIOUS_TAG}..${new_tag})</summary>" >> release_info.md
               echo "" >> release_info.md
-              git log --pretty=format:"(%h) %s" ${PREVIOUS_TAG}..HEAD >> release_info.md
+              git log --pretty=format:"%h %s" ${PREVIOUS_TAG}..HEAD >> release_info.md
               echo "" >> release_info.md
               echo "</details>" >> release_info.md
           fi
